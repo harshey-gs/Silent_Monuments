@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Silent Monuments | NASA Discarded Equipment on the Moon and Mars</title>
+  <meta name="description" content="Explore thirteen historic spacecraft, rovers, and scientific instruments resting in silence on the Moon, Mars, and across deep space.">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Skip link for keyboard navigation -->
+  <a href="#main-catalog" class="skip-link button-md">Skip to content</a>
+
+  <!-- Floating Navigation per B7 -->
+  <nav class="floating-nav" aria-label="Main Navigation">
+    <a href="#" class="nav-brand title-3">
+      <span class="status-beacon"></span>
+      Silent Monuments
+    </a>
+    <div class="nav-links">
+      <a href="#main-catalog" class="nav-link">Catalog</a>
+      <a href="#how-it-works" class="nav-link">Telemetry</a>
+      <a href="#faq" class="nav-link">FAQ</a>
+    </div>
+  </nav>
+
+  <div class="page-container">
+
+    <!-- Hero Section with Interactive Terra Dusk Background -->
+    <header class="hero-section" style="position: relative; overflow: hidden; border-radius: 20px; padding: 80px 20px;">
+      
+      <!-- Terra Dusk WebGL canvas mounts inside this div -->
+      <div id="terra-dusk-bg" style="position: absolute; inset: 0; z-index: 0; opacity: 0.65; cursor: grab;"></div>
+
+      <div style="position: relative; z-index: 1;">
+        <div class="proof-signal caption-3" style="margin-bottom: 16px; justify-content: center;">
+          <span class="status-beacon"></span>
+          13 VERIFIED SITES // NASA PLANETARY DATA SYSTEM
+        </div>
+        <h1 class="heading-1 hero-heading">
+          The permanent museum of human exploration across other worlds
+        </h1>
+        <p class="body-2 hero-subheading" style="margin-left: auto; margin-right: auto;">
+          Explore thirteen historic spacecraft, rovers, and scientific instruments resting in silence on the Moon, Mars, and across deep space.
+        </p>
+        <div class="hero-actions" style="justify-content: center;">
+          <a href="#main-catalog" class="button-md button-primary">Inspect the catalog</a>
+          <a href="#faq" class="button-md button-secondary">Read historical records</a>
+        </div>
+      </div>
+    </header>
+
+    <!-- Mandatory B11 Tagline Reveal Section -->
+    <section class="reveal-section" aria-label="Tagline Reveal">
+      <p class="reveal-phrase" id="revealPhrase">
+        <span class="reveal-word">Machines</span>
+        <span class="reveal-word">sent</span>
+        <span class="reveal-word">across</span>
+        <span class="reveal-word">the</span>
+        <span class="reveal-word">void</span>
+        <span class="reveal-word">remain</span>
+        <span class="reveal-word">as</span>
+        <span class="reveal-word">silent</span>
+        <span class="reveal-word">monuments</span>
+        <span class="reveal-word">of</span>
+        <span class="reveal-word">human</span>
+        <span class="reveal-word">daring.</span>
+      </p>
+    </section>
+
+    <!-- Interactive Catalog Section -->
+    <main id="main-catalog">
+      <div class="catalog-controls">
+        <div class="tab-group" role="tablist">
+          <button class="tab-pill active" data-filter="all">All locations</button>
+          <button class="tab-pill" data-filter="moon">The Moon</button>
+          <button class="tab-pill" data-filter="mars">Mars</button>
+          <button class="tab-pill" data-filter="deep-space">Deep Space</button>
+        </div>
+        <input type="text" id="searchInput" class="search-input-field" placeholder="Search mission name or coordinates...">
+      </div>
+
+      <!-- Relics Grid -->
+      <section class="relics-grid" id="relicsGrid">
+        <!-- Rendered dynamically by app.js -->
+      </section>
+    </main>
+
+    <!-- How It Works Section -->
+    <section id="how-it-works" class="section-block">
+      <div class="section-intro">
+        <span class="caption-3" style="color: var(--accent-cyan); text-transform: uppercase;">Methodology</span>
+        <h2 class="heading-3" style="margin-top: 8px;">How mission coordinates are documented</h2>
+      </div>
+      <div class="steps-layout">
+        <div class="step-card">
+          <div class="step-index">STEP 01</div>
+          <h3 class="title-2" style="margin-bottom: 8px;">Orbital survey verification</h3>
+          <p class="body-3" style="color: var(--text-secondary);">
+            Cameras aboard the Lunar Reconnaissance Orbiter and Mars Reconnaissance Orbiter photograph surface hardware directly from orbit.
+          </p>
+        </div>
+        <div class="step-card">
+          <div class="step-index">STEP 02</div>
+          <h3 class="title-2" style="margin-bottom: 8px;">Telemetry triangulation</h3>
+          <p class="body-3" style="color: var(--text-secondary);">
+            Doppler shifts in radio transmissions record the precise impact or soft touchdown latitude and longitude.
+          </p>
+        </div>
+        <div class="step-card">
+          <div class="step-index">STEP 03</div>
+          <h3 class="title-2" style="margin-bottom: 8px;">Preservation under accords</h3>
+          <p class="body-3" style="color: var(--text-secondary);">
+            Landing locations are cataloged as protected heritage zones under international space agreements.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section id="faq" class="section-block">
+      <div class="section-intro">
+        <span class="caption-3" style="color: var(--accent-cyan); text-transform: uppercase;">Questions & Context</span>
+        <h2 class="heading-3" style="margin-top: 8px;">Frequently addressed inquiries</h2>
+      </div>
+      <div class="faq-stack">
+        <details class="faq-card">
+          <summary>Why does NASA leave equipment behind?</summary>
+          <p class="body-3">Returning machines to Earth requires heavy fuel and propulsion systems. Leaving descent stages and science stations behind allows space probes to carry more scientific instruments.</p>
+        </details>
+        <details class="faq-card">
+          <summary>Is any hardware still functional today?</summary>
+          <p class="body-3">Most are completely unpowered. However, retroreflectors left on the Moon by Apollo crews still bounce laser beams back to Earth observatories today to measure lunar orbit drift.</p>
+        </details>
+        <details class="faq-card">
+          <summary>Are these items legally protected?</summary>
+          <p class="body-3">Yes. International frameworks and the Artemis Accords designate key sites, such as Apollo 11 Tranquility Base, as protected archaeological zones of human heritage.</p>
+        </details>
+        <details class="faq-card">
+          <summary>What caused Opportunity rover to shut down?</summary>
+          <p class="body-3">In June 2018, a planet circling dust storm blocked solar light, exhausting Opportunity batteries after fourteen years of travel across Mars.</p>
+        </details>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer style="padding-top: 48px; border-top: 1px solid var(--border-card); text-align: center; color: var(--text-muted);" class="caption-1">
+      <p>Silent Monuments Archive // Built for NASA Space Apps Challenge 2026</p>
+      <p style="margin-top: 8px;">Data extracted from NASA Planetary Data System and NSSDC public mission archives.</p>
+    </footer>
+
+  </div>
+
+  <!-- Inspection Modal -->
+  <div class="modal-backdrop" id="modalBackdrop">
+    <div class="modal-sheet">
+      <button class="modal-dismiss-btn" id="modalDismissBtn" aria-label="Close dialog">&times;</button>
+      <div id="modalDetails"></div>
+    </div>
+  </div>
+
+  <script src="artifacts.js"></script>
+  <script src="terra-dusk.js"></script>
+  <script src="app.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,192 @@
+// Catalog of NASA Discarded & Resting Equipment
+// Directly matched to NASA NSSDC & Science Mission Data Records
+
+const ARTIFACTS = [
+  // --- THE MOON ---
+  {
+    id: "apollo-11-eagle",
+    name: "Apollo 11 'Eagle' Descent Stage",
+    category: "moon",
+    location: "Mare Tranquillitatis (Sea of Tranquility)",
+    coordinates: "0.67408 N, 23.47297 E",
+    launchYear: "1969",
+    status: "Historic Lunar Monument",
+    nssdclink: "https://nssdc.gsfc.nasa.gov/nmc/spacecraft/display.action?id=1969-059C",
+    tagline: "The foundation of the first human footsteps on another celestial body.",
+    story: "On July 20, 1969, Neil Armstrong and Buzz Aldrin landed the Eagle in the Sea of Tranquility. When they launched back into lunar orbit, this descent stage remained behind as their launch pad. It still bears the historic commemorative plaque and laser ranging retroreflector.",
+    relicType: "Lunar Module Descent Stage",
+    notableArtifacts: ["Commemorative Stainless Plaque", "Descent Propulsion Engine", "Passive Seismic Experiment"]
+  },
+  {
+    id: "apollo-15-lrv",
+    name: "Apollo 15 Lunar Roving Vehicle (LRV)",
+    category: "moon",
+    location: "Hadley Rille / Apennine Mountains",
+    coordinates: "26.1322 N, 3.6338 E",
+    launchYear: "1971",
+    status: "Parked Permanently on Surface",
+    nssdclink: "https://nssdc.gsfc.nasa.gov/nmc/spacecraft/display.action?id=1971-063C",
+    tagline: "The original electric buggy driven across lunar mountains and rilles.",
+    story: "Driven by astronauts David Scott and James Irwin, this 460-pound electric rover traveled 17.5 miles exploring the deep gorge of Hadley Rille. When the mission concluded, its color television camera was parked and aimed to broadcast the liftoff of the Lunar Module ascent stage.",
+    relicType: "Manned Surface Rover",
+    notableArtifacts: ["Woven Steel Wire Mesh Wheels", "High Gain TV Antenna", "Lunar Sample Carrier Deck"]
+  },
+  {
+    id: "apollo-12-alsep",
+    name: "Apollo 12 ALSEP Station",
+    category: "moon",
+    location: "Oceanus Procellarum (Ocean of Storms)",
+    coordinates: "3.0124 S, 23.4216 W",
+    launchYear: "1969",
+    status: "Nuclear Powered Station (Deactivated 1977)",
+    nssdclink: "https://nssdc.gsfc.nasa.gov/nmc/spacecraft/display.action?id=1969-099C",
+    tagline: "Plutonium-powered laboratory that listened to deep moonquakes for 8 years.",
+    story: "Deployed by Pete Conrad and Alan Bean, this Apollo Lunar Surface Experiments Package was powered by a SNAP-27 nuclear thermoelectric generator. It gathered science data on moonquakes, solar wind, and lunar magnetic fields until NASA officially terminated reception in September 1977.",
+    relicType: "Surface Science Observatory",
+    notableArtifacts: ["SNAP-27 Radioisotope Thermoelectric Generator", "Passive Seismometer", "Solar Wind Spectrometer"]
+  },
+  {
+    id: "surveyor-3",
+    name: "Surveyor 3 Soft Lander",
+    category: "moon",
+    location: "Oceanus Procellarum, Moon",
+    coordinates: "3.0163 S, 23.4180 W",
+    launchYear: "1967",
+    status: "Examined by Apollo 12 Astronauts",
+    nssdclink: "https://science.nasa.gov/mission/surveyor-3/",
+    tagline: "The robotic scout that proved Apollo boots would not sink into lunar dust.",
+    story: "Surveyor 3 bounced three times before settling into a shallow crater. Two and a half years later, Apollo 12 made a precision touchdown just 600 feet away. The astronauts walked to the probe and removed its TV camera to bring home, showing how machinery weathers the vacuum of space.",
+    relicType: "Uncrewed Lunar Soft Lander",
+    notableArtifacts: ["Surface Sampler Soil Scoop", "Television Camera System", "Radar Altimeter"]
+  },
+
+  // --- MARS ---
+  {
+    id: "sojourner-pathfinder",
+    name: "Sojourner Rover & Pathfinder Base",
+    category: "mars",
+    location: "Ares Vallis (Carl Sagan Memorial Station)",
+    coordinates: "19.33 N, 33.55 W",
+    launchYear: "1996",
+    status: "Silent Since October 7, 1997",
+    nssdclink: "https://science.nasa.gov/mission/mars-pathfinder/",
+    tagline: "The twenty-three pound pioneer that proved robotic wheels could roam Mars.",
+    story: "Sojourner rolled down the ramp of the Pathfinder lander on July 4, 1997. It explored surrounding rocks like 'Barnacle Bill' and 'Yogi' for 83 Martian days. When Pathfinder's primary battery depleted in late 1997, Sojourner was left circling the silent base.",
+    relicType: "Micro-Rover & Surface Station",
+    notableArtifacts: ["Rocker-Bogie 6-Wheel Chassis", "Alpha Proton X-Ray Unit", "Solar Deck Panel"]
+  },
+  {
+    id: "spirit-opportunity",
+    name: "Spirit & Opportunity Twin Rovers",
+    category: "mars",
+    location: "Gusev Crater (Spirit) & Endeavour Crater (Oppy)",
+    coordinates: "Spirit: 14.57 S, 175.47 E | Oppy: 2.34 S, 354.76 E",
+    launchYear: "2003",
+    status: "End of Missions: 2010 (Spirit) / 2018 (Oppy)",
+    nssdclink: "https://science.nasa.gov/mission/mars-exploration-rovers-spirit-and-opportunity/",
+    tagline: "Designed for 90 days, Opportunity explored Mars for 14.5 marathons.",
+    story: "Spirit uncovered pure silica hot spring remnants before becoming trapped in loose sand in 2009. Opportunity soldiered on for 28.06 miles across Endeavour Crater until a colossal planet-encircling dust storm blotted out the sun in mid-2018, permanently depleting its batteries.",
+    relicType: "Long-Range Exploration Rovers",
+    notableArtifacts: ["Rock Abrasion Grinder", "Pancam Stereo Imaging Mast", "Mössbauer Spectrometer"]
+  },
+  {
+    id: "viking-1",
+    name: "Viking 1 Lander",
+    category: "mars",
+    location: "Chryse Planitia (Plains of Gold)",
+    coordinates: "22.48 N, 48.0 W",
+    launchYear: "1975",
+    status: "Operational for 6 Years (Silent 1982)",
+    nssdclink: "https://science.nasa.gov/mission/viking-1/",
+    tagline: "The first US spacecraft to successfully touch down and breathe Martian air.",
+    story: "Viking 1 transmitted the very first high-resolution color photographs from the surface of Mars on July 20, 1976. Powered by nuclear RTGs, it sampled soil and monitored Martian weather for over 2,245 sols until a technician's human error during a software uplink severed antenna lock in 1982.",
+    relicType: "Stationary Nuclear-Powered Lander",
+    notableArtifacts: ["Surface Sampler Collector Arm", "Gas Chromatograph Mass Spectrometer", "Seismometer Unit"]
+  },
+  {
+    id: "insight-lander",
+    name: "InSight Geophysical Lander",
+    category: "mars",
+    location: "Elysium Planitia, Mars",
+    coordinates: "4.502 N, 135.623 E",
+    launchYear: "2018",
+    status: "Power Depleted by Dust (December 2022)",
+    nssdclink: "https://science.nasa.gov/mission/insight/",
+    tagline: "The seismic ear that recorded the heartbeat and meteor strikes of Mars.",
+    story: "InSight placed the most sensitive seismometer ever conceived directly onto Martian soil, recording over 1,300 marsquakes and mapping the depth of Mars' crust and liquid core. Thick atmospheric red dust gradually caked its twin solar wings until its final transmission on December 15, 2022.",
+    relicType: "Geophysical Planetary Laboratory",
+    notableArtifacts: ["SEIS Seismic Station Dome", "Heat Flow and Physical Properties Probe", "Robotic Deployment Arm"]
+  },
+  {
+    id: "ingenuity-helicopter",
+    name: "Ingenuity Mars Helicopter ('Ginny')",
+    category: "mars",
+    location: "Valinor Hills, Jezero Crater",
+    coordinates: "18.4447 N, 77.4508 E",
+    launchYear: "2020",
+    status: "Rotor Damaged (Flight 72, Jan 2024)",
+    nssdclink: "https://science.nasa.gov/mission/mars-2020-perseverance/ingenuity-mars-helicopter/",
+    tagline: "The Wright Brothers moment on another celestial world.",
+    story: "Built to test whether aerodynamic flight was possible in Mars' razor-thin atmosphere (just 1% of Earth's density), Ingenuity was designed for 5 flights and ended up flying 72 times. On its final landing, rotor blade tips struck sand. It now serves as a permanent stationary avionics beacon in Jezero.",
+    relicType: "Autonomous Aerial Rotorcraft",
+    notableArtifacts: ["Dual Counter-Rotating Carbon Rotors", "Wright Flyer Wing Fabric Swatch", "Solar Battery Deck"]
+  },
+
+  // --- DEEP SPACE & ASTEROIDS ---
+  {
+    id: "dawn-spacecraft",
+    name: "Dawn Asteroid Explorer",
+    category: "deep-space",
+    location: "Perpetual Orbit of Dwarf Planet Ceres",
+    coordinates: "High-Altitude Frozen Orbit around Ceres",
+    launchYear: "2007",
+    status: "Hydrazine Depleted (Ghost Orbiter)",
+    nssdclink: "https://science.nasa.gov/mission/dawn/",
+    tagline: "The only spacecraft to orbit two different celestial bodies beyond Earth.",
+    story: "Powered by glowing blue xenon ion thrusters, Dawn visited the protoplanet Vesta and dwarf planet Ceres, discovering brilliant salt deposits inside Occator Crater. When its attitude control fuel was exhausted in 2018, NASA placed it into a stable orbit that will not decay for centuries.",
+    relicType: "Ion Propulsion Deep Space Orbiter",
+    notableArtifacts: ["Xenon Ion Thruster Engine", "Framing Cameras", "High Gain Telemetry Dish"]
+  },
+  {
+    id: "near-shoemaker",
+    name: "NEAR Shoemaker Probe",
+    category: "deep-space",
+    location: "Surface of Asteroid 433 Eros",
+    coordinates: "South Tip of Asteroid 433 Eros",
+    launchYear: "1996",
+    status: "Resting on Asteroid Surface (2001)",
+    nssdclink: "https://science.nasa.gov/mission/near-shoemaker/",
+    tagline: "The spacecraft that wasn't designed to land, but landed anyway.",
+    story: "After orbiting the tumbling asteroid Eros for a full year, NASA engineers commanded NEAR to attempt a daring descent. Traveling at just 4 miles per hour, it survived touchdown on the boulder-strewn surface and transmitted gamma-ray readings directly from the ground for two weeks.",
+    relicType: "Asteroid Exploration Orbiter & Lander",
+    notableArtifacts: ["Laser Rangefinder", "X-Ray/Gamma-Ray Spectrometer", "Solar Power Wings"]
+  },
+  {
+    id: "pioneer-10",
+    name: "Pioneer 10 Deep Space Probe",
+    category: "deep-space",
+    location: "Interstellar Space (Heading to Aldebaran)",
+    coordinates: ">130 Astronomical Units (AU) from Earth",
+    launchYear: "1972",
+    status: "Silent Interstellar Messenger",
+    nssdclink: "https://science.nasa.gov/mission/pioneer-10/",
+    tagline: "Carrying humanity's golden message plaque out into the galactic deep.",
+    story: "Pioneer 10 was the first spacecraft to navigate the asteroid belt and capture close-up images of Jupiter. It carries the famous gold-anodized plaque designed by Carl Sagan. Its nuclear RTG power faded in 2003; it now glides in perpetual silence toward the red giant star Aldebaran.",
+    relicType: "Interstellar Scientific Voyager",
+    notableArtifacts: ["Gold-Anodized Pioneer Plaque", "2.74-Meter Parabolic Antenna", "Nuclear RTG Booms"]
+  },
+  {
+    id: "kepler-space-telescope",
+    name: "Kepler Space Telescope",
+    category: "deep-space",
+    location: "Earth-Trailing Heliocentric Orbit",
+    coordinates: "~94 Million Miles Behind Earth",
+    launchYear: "2009",
+    status: "Retired / Drifting in Earth's Wake (2018)",
+    nssdclink: "https://science.nasa.gov/mission/kepler/",
+    tagline: "The telescope that proved planets outnumber the stars in our galaxy.",
+    story: "Kepler stared at 150,000 stars in Cygnus, detecting the tiny dips in starlight as planets crossed in front of their suns. It discovered over 2,600 exoplanets. In October 2018, having fully drained its reaction fuel, NASA sent final 'goodnight' commands and retired the observatory in orbit.",
+    relicType: "Exoplanet Space Observatory",
+    notableArtifacts: ["0.95-Meter Schmidt Telescope", "42-CCD Photometer Detector", "Solar Array Shield"]
+  }
+];
