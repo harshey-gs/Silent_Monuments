@@ -9,13 +9,10 @@
 </head>
 <body>
 
-  <!-- 3D Interactive Rotating Earth Background -->
-  <canvas id="terraCanvas"></canvas>
-
   <!-- Skip link for keyboard navigation -->
   <a href="#main-catalog" class="skip-link button-md">Skip to content</a>
 
-  <!-- Floating Navigation -->
+  <!-- Floating Navigation per B7 -->
   <nav class="floating-nav" aria-label="Main Navigation">
     <a href="#" class="nav-brand title-3">
       <span class="status-beacon"></span>
@@ -29,6 +26,7 @@
   </nav>
 
   <div class="page-container">
+
     <!-- Hero Section -->
     <header class="hero-section">
       <div class="proof-signal caption-3" style="margin-bottom: 16px;">
@@ -47,7 +45,7 @@
       </div>
     </header>
 
-    <!-- B11 Tagline Reveal Section -->
+    <!-- Mandatory B11 Tagline Reveal Section -->
     <section class="reveal-section" aria-label="Tagline Reveal">
       <p class="reveal-phrase" id="revealPhrase">
         <span class="reveal-word">Machines</span>
@@ -78,7 +76,9 @@
       </div>
 
       <!-- Relics Grid -->
-      <section class="relics-grid" id="relicsGrid"></section>
+      <section class="relics-grid" id="relicsGrid">
+        <!-- Injected dynamically by app.js -->
+      </section>
     </main>
 
     <!-- How It Works Section -->
@@ -143,6 +143,7 @@
       <p>Silent Monuments Archive // Built for NASA Space Apps Challenge 2026</p>
       <p style="margin-top: 8px;">Data extracted from NASA Planetary Data System public mission logs.</p>
     </footer>
+
   </div>
 
   <!-- Inspection Modal -->
@@ -153,11 +154,7 @@
     </div>
   </div>
 
-  <!-- Scripts -->
   <script src="artifacts.js"></script>
-  <script src="terra-dusk.js"></script>
   <script src="app.js"></script>
 </body>
-<canvas id="terraCanvas"></canvas>
-
 </html>

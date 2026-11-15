@@ -1,3 +1,4 @@
+// Application logic with robust SVG fallback for images
 document.addEventListener("DOMContentLoaded", () => {
   const grid = document.getElementById("relicsGrid");
   const tabButtons = document.querySelectorAll(".tab-pill");
@@ -9,20 +10,19 @@ document.addEventListener("DOMContentLoaded", () => {
   let currentCategory = "all";
   let searchFilter = "";
 
-  // Helper to create a crisp NASA HUD Telemetry blueprint if an image is blocked or offline
-  function createBlueprintCanvas(name, category, coordinates) {
-    const symbol = category === "moon" ? "LUNAR SURFACE RELIC" : category === "mars" ? "MARTIAN SOIL MONUMENT" : "DEEP SPACE DRIFTER";
+  // Helper to create an SVG fallback when an external photo fails to load
+  function getFallbackSvg(name, category) {
+    const symbol = category === "moon" ? "🌕" : category === "mars" ? "🪐" : "🌌";
     return `
-      <div class="blueprint-box">
-        <div class="blueprint-grid"></div>
-        <div class="blueprint-badge">${symbol}</div>
-        <div class="blueprint-title">${name}</div>
-        <div class="blueprint-coords">COORDS: ${coordinates}</div>
-        <div class="blueprint-status">TELEMETRY ARCHIVED // NASA PDS</div>
+      <div class="relic-placeholder">
+        <div style="font-size: 32px;">${symbol}</div>
+        <div class="caption-3" style="color: var(--text-secondary);">${name}</div>
+        <div class="caption-3" style="color: var(--text-muted);">NASA Archival Diagram</div>
       </div>
     `;
   }
 
+  // Render cards
   function renderCards() {
     grid.innerHTML = "";
 
@@ -49,48 +49,27 @@ document.addEventListener("DOMContentLoaded", () => {
       card.className = "relic-card";
       card.setAttribute("tabindex", "0");
 
-      const imageContainer = document.createElement("div");
-      imageContainer.className = "relic-image-box";
-
-      const tag = document.createElement("span");
-      tag.className = "category-tag";
-      tag.textContent = artifact.category;
-      imageContainer.appendChild(tag);
-
-      // Robust image loader with event listener (prevents HTML escaping bugs)
-      const img = new Image();
-      img.alt = artifact.name;
-      img.loading = "lazy";
-      //img.crossOrigin = "anonymous";
-      img.referrerPolicy = "no-referrer";
-
-      img.onload = () => {
-        imageContainer.appendChild(img);
-      };
-
-      img.onerror = () => {
-        imageContainer.innerHTML = `
+      card.innerHTML = `
+        <div class="relic-image-box" id="img-box-${artifact.id}">
           <span class="category-tag">${artifact.category}</span>
-          ${createBlueprintCanvas(artifact.name, artifact.category, artifact.coordinates)}
-        `;
-      };
-
-      img.src = artifact.imageUrl;
-
-      const body = document.createElement("div");
-      body.className = "relic-card-body";
-      body.innerHTML = `
-        <h3 class="title-2 card-title-text">${artifact.name}</h3>
-        <div class="card-coordinates">📍 ${artifact.coordinates}</div>
-        <p class="body-5 card-summary-text">${artifact.tagline}</p>
-        <div class="card-action-bar">
-          <span class="caption-3" style="color: var(--text-muted);">${artifact.launchYear}</span>
-          <span class="action-label caption-1">Inspect dossier &rarr;</span>
+          <img 
+            src="${artifact.imageUrl}" 
+            alt="${artifact.name}" 
+            loading="lazy" 
+            referrerpolicy="no-referrer"
+            onerror="this.parentElement.innerHTML = '<span class=\\'category-tag\\'>${artifact.category}</span>' + \`${getFallbackSvg(artifact.name, artifact.category)}\`"
+          >
+        </div>
+        <div class="relic-card-body">
+          <h3 class="title-2 card-title-text">${artifact.name}</h3>
+          <div class="card-coordinates">📍 ${artifact.coordinates}</div>
+          <p class="body-5 card-summary-text">${artifact.tagline}</p>
+          <div class="card-action-bar">
+            <span class="caption-3" style="color: var(--text-muted);">${artifact.launchYear}</span>
+            <span class="action-label caption-1">Inspect dossier &rarr;</span>
+          </div>
         </div>
       `;
-
-      card.appendChild(imageContainer);
-      card.appendChild(body);
 
       card.addEventListener("click", () => openModal(artifact));
       card.addEventListener("keydown", (e) => {
@@ -101,31 +80,32 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-    function openModal(artifact) {
+  // Open modal
+  function openModal(artifact) {
     modalDetails.innerHTML = `
       <div style="margin-bottom: 16px;">
-        <span class="caption-3" style="color: var(--accent-cyan); text-transform: uppercase;">// OFFICIAL MISSION DOSSIER</span>
+        <span class="caption-3" style="color: var(--accent-cyan); text-transform: uppercase;">// RECORD DOSSIER</span>
         <h2 class="heading-4" style="margin-top: 4px;">${artifact.name}</h2>
         <div class="caption-1" style="color: var(--text-secondary); margin-top: 4px;">📍 ${artifact.location} (${artifact.coordinates})</div>
       </div>
 
-      <div style="margin-bottom: 24px; border-radius: 8px; overflow: hidden; height: 320px; background-color: var(--bg-surface-elevated); display: flex; align-items: center; justify-content: center;">
+      <div style="margin-bottom: 24px; border-radius: 8px; overflow: hidden; height: 260px; background-color: var(--bg-surface-elevated); display: flex; align-items: center; justify-content: center;">
         <img 
           src="${artifact.imageUrl}" 
           alt="${artifact.name}" 
           style="width: 100%; height: 100%; object-fit: cover;"
           referrerpolicy="no-referrer"
-          onerror="this.parentElement.innerHTML = \`${createBlueprintCanvas(artifact.name, artifact.category, artifact.coordinates)}\`"
+          onerror="this.parentElement.innerHTML = \`${getFallbackSvg(artifact.name, artifact.category)}\`"
         >
       </div>
 
-      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px; margin-bottom: 24px; padding: 16px; background-color: var(--bg-surface-elevated); border-radius: 8px; border: 1px solid var(--border-card);">
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 12px; margin-bottom: 24px; padding: 16px; background-color: var(--bg-surface-elevated); border-radius: 8px; border: 1px solid var(--border-card);">
         <div>
           <div class="caption-3" style="color: var(--text-muted);">CLASSIFICATION</div>
           <div class="body-5" style="margin-top: 4px;">${artifact.relicType}</div>
         </div>
         <div>
-          <div class="caption-3" style="color: var(--text-muted);">LAUNCH / DEPLOYMENT</div>
+          <div class="caption-3" style="color: var(--text-muted);">DEPLOYMENT</div>
           <div class="body-5" style="margin-top: 4px;">${artifact.launchYear}</div>
         </div>
         <div>
@@ -135,23 +115,17 @@ document.addEventListener("DOMContentLoaded", () => {
       </div>
 
       <div style="margin-bottom: 24px;">
-        <h3 class="title-2" style="margin-bottom: 12px; color: #FFFFFF;">Mission Story & Final Telemetry Log</h3>
-        <p class="modal-story-text">${artifact.story}</p>
-      </div>
-
-      <div style="margin-bottom: 28px;">
-        <h3 class="title-3" style="margin-bottom: 10px; color: #FFFFFF;">Documented Hardware Left Behind</h3>
-        <div style="display: flex; gap: 8px; flex-wrap: wrap;">
-          ${artifact.notableArtifacts.map(item => `
-            <span class="caption-3" style="background-color: var(--bg-surface-elevated); border: 1px solid var(--border-card); padding: 6px 12px; border-radius: 6px; color: var(--text-primary);">${item}</span>
-          `).join("")}
-        </div>
+        <h3 class="title-3" style="margin-bottom: 8px;">Mission outcome & resting log</h3>
+        <p class="body-3" style="color: var(--text-secondary);">${artifact.story}</p>
       </div>
 
       <div>
-        <a href="${artifact.nasaUrl}" target="_blank" rel="noopener noreferrer" class="button-md button-primary" style="font-size: 14px;">
-          View Official NASA Science Record &rarr;
-        </a>
+        <h3 class="title-3" style="margin-bottom: 8px;">Equipment left on site</h3>
+        <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+          ${artifact.notableArtifacts.map(item => `
+            <span class="caption-3" style="background-color: var(--bg-surface-elevated); border: 1px solid var(--border-card); padding: 4px 8px; border-radius: 4px; color: var(--text-primary);">${item}</span>
+          `).join("")}
+        </div>
       </div>
     `;
 
@@ -163,6 +137,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if (e.target === modalBackdrop) modalBackdrop.classList.remove("open");
   });
 
+  // Filter tabs
   tabButtons.forEach(btn => {
     btn.addEventListener("click", () => {
       tabButtons.forEach(b => b.classList.remove("active"));
@@ -172,12 +147,13 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
+  // Search input
   searchInput.addEventListener("input", (e) => {
     searchFilter = e.target.value;
     renderCards();
   });
 
-  // Reveal words on scroll
+  // B11 Tagline Reveal Animation on scroll using IntersectionObserver
   const revealWords = document.querySelectorAll(".reveal-word");
   if ("IntersectionObserver" in window) {
     const observer = new IntersectionObserver((entries) => {
@@ -199,5 +175,6 @@ document.addEventListener("DOMContentLoaded", () => {
     revealWords.forEach(word => word.classList.add("revealed"));
   }
 
+  // Initial render
   renderCards();
 });
