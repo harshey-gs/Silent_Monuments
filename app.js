@@ -61,7 +61,7 @@ document.addEventListener("DOMContentLoaded", () => {
       const img = new Image();
       img.alt = artifact.name;
       img.loading = "lazy";
-      img.crossOrigin = "anonymous";
+      //img.crossOrigin = "anonymous";
       img.referrerPolicy = "no-referrer";
 
       img.onload = () => {

@@ -618,6 +618,26 @@ body {
   }
 }
 
+.floating-nav,
+.page-container,
+.modal-backdrop {
+  position: relative;
+  z-index: 10;
+}
+/* Let mouse drags pass through to the planet while keeping buttons clickable */
+.hero-section {
+  pointer-events: none;
+}
+.hero-actions,
+.hero-actions a,
+.button-md,
+.tab-pill,
+.search-input-field,
+.relic-card {
+  pointer-events: auto;
+}
+
+
 /* Background 3D Earth Canvas */
 #terraCanvas {
   position: fixed;

@@ -217,7 +217,7 @@
     }
 
     // Centered vertically behind hero header
-    const centerY = H * 0.42;
+    const centerY = H * 0.60; /* Positions the globe directly behind the main title */
     const radius = Math.min(W, H) * 0.36; // ~540px diameter
 
     gl.uniform2f(uCenter, W * 0.5, centerY);
