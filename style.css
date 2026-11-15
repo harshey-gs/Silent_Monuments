@@ -35,16 +35,18 @@
 
 html {
   scroll-behavior: smooth;
+  background-color: #02040A;
 }
 
 body {
-  background-color: var(--bg-base);
+  background-color: transparent; /* Allows the 3D planet canvas to shine through */
   color: var(--text-primary);
   font-family: var(--font-primary);
   font-size: 16px;
   line-height: 24px;
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
+  min-height: 100vh;
 }
 
 /* Typography styles from B1 */
@@ -623,7 +625,7 @@ body {
   left: 0;
   width: 100vw;
   height: 100vh;
-  z-index: -1;
+  z-index: 0;
   pointer-events: auto;
   background-color: #02040A;
 }
